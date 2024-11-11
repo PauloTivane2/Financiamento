@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RuralFin: Entrar</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #595f64; /* Fundo claro */
+            margin: 0; /* Remove margem padrão do body */
+            overflow: auto; /* Permite rolagem quando necessário */
+        }
+
+        .login-box {
+            background-color: #343a40;
+            padding: 40px;
+           
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            max-width: 400px;
+            width: 100%;
+            position: relative;
+            text-align: center;
+            border: 2px solid #5c6164; /* Cor da linha/borda do quadrado */
+        }
+
+        .login-box img {
+            display: block; /* Exibe a imagem como um bloco */
+            margin: 0 auto -20px; /* Centraliza a logo e ajusta a margem inferior */
+            height: 100px;
+            width: auto; /* Mantém a proporção da logo */
+            max-width: 100%; /* Para evitar deformação */
+            border-radius: 10px;
+            margin-bottom: 5px;
+        }
+
+        .login-box h2 {
+            margin-bottom: 30px;
+            font-size: 24px;
+            color: #c4bebe;
+        }
+
+        .form-group label {
+            float: left;
+            font-size: 16px;
+            color: #c4bebe;
+        }
+
+        .form-control {
+            margin-bottom: 20px;
+            border-radius: 5px;
+            height: 45px;
+            font-size: 16px;
+        }
+
+        .login-options {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+        }
+
+        .login-options a {
+            text-decoration: none;
+            color: #007bff;
+        }
+        
+        .login-options a:hover {
+            text-decoration: underline;
+            color: #007bff;
+        }
+
+        .btn-primary {
+            width: 100%;
+            height: 45px;
+            border-radius: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .login-box img {
+                height: 80px; /* Altura da logo para telas menores */
+                width: auto; /* Mantém a proporção da logo */
+                
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-box">
+        <!-- Insira sua logo aqui -->
+        <img src="../imagens/logo.png" alt="Logo do Sistema">
+        <h2>Entrar</h2>
+        <form>
+            <div class="form-group">
+                <label for="email">E-mail</label>
+                <input type="email" class="form-control" id="email" placeholder="Digite seu e-mail" required>
+            </div>
+            <div class="form-group">
+                <label for="senha">Senha</label>
+                <input type="password" class="form-control" id="senha" placeholder="Digite sua senha" required>
+            </div>
+            <button type="submit" class="btn btn-primary" id="entrar">Entrar</button>
+        </form>
+
+        <div class="login-options mt-3">
+            <a href="recuperarSenha.html">Recuperar Senha</a>
+            <a href="../entrarRegistrar/registrar.html">Registrar-se</a>
+        </div>
+    </div>
+
+    <!-- Modal de Erro -->
+<div class="modal fade" id="erroModal" tabindex="-1" role="dialog" aria-labelledby="erroModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="erroModalLabel">Erro de Login</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="erroMensagem">
+                <!-- A mensagem de erro aparecerá aqui -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script type="module" src="../db/login.js"></script>
+</body>
+</html>

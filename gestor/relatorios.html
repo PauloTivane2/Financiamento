@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RuralFin: Relatórios</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=DynaPuff:wght@400..700&family=Kablammo&display=swap">
+    <style>
+      body {
+        background-color: #f0f0f5;
+      }
+
+      .navbar {
+        height: 85px;
+        padding: 0 4%;
+      }
+
+      .navbar-nav {
+        margin-left: auto;
+        margin-right: 1%;
+      }
+
+      .navbar-brand img {
+        width: 100%;
+        max-width: 250px;
+      }
+
+      .dashboard {
+        margin-top: 100px;
+        padding: 20px;
+      }
+
+      .dashboard-header {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .dashboard-section {
+        background-color: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+      }
+
+      .dashboard-section h5 {
+        margin-bottom: 15px;
+        color: #007bff;
+      }
+
+      .table-responsive {
+        margin-top: 20px;
+      }
+
+      .card-deck {
+        margin-top: 20px;
+        margin-bottom: 20px;
+      }
+
+        /*Rodapé*/
+footer {
+    background-color: #343a40; /* Cor da barra bg-dark */
+    padding: 40px 0;
+  }
+
+  footer a {
+    text-decoration: none;
+  }
+
+  footer a:hover {
+    color: #007bff; /* Cor ao passar o mouse */
+  }
+
+  footer h5 {
+    font-weight: bold;
+    margin-bottom: 15px;
+  }
+
+  footer p {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  /* Responsivo para telas menores */
+  @media (max-width: 768px) {
+    footer .col-md-4, footer .col-md-2, footer .col-md-3 {
+      margin-bottom: 20px;
+    }
+  }
+    </style>
+</head>
+<body>
+
+    <!-- BARRA DE NAVEGAÇÃO -->
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#"><img src="../imagens/logo.png" alt="RuralFin Logo"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="../conectadoGestor/gestorPaginaInicial.html">Início</a>
+            </li>
+            <li class="nav-item">
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Conectado (Gestor)
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                      <a class="dropdown-item" href="../index.html">Sair</a>
+                    </div>
+                  </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="painelGestor.html">Painel do Gestor</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Relatórios</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="gestaoBeneficiarios.html">Gestão de Beneficiários</a>
+            </li>
+           
+          </ul>
+        </div>
+    </nav>
+
+    <!-- PAINEL DE RELATÓRIOS -->
+    <div class="container dashboard">
+      <div class="dashboard-header">
+        <h2>Relatórios de Financiamento</h2>
+        <p>Visualize dados de financiamentos, beneficiários e solicitações de crédito.</p>
+      </div>
+
+      <!-- SEÇÃO DE RELATÓRIOS GERAIS -->
+      <div class="dashboard-section">
+        <h5>Relatório Geral de Financiamentos</h5>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Total Financiado</h5>
+                <p class="card-text" id="totValor">#</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Solicitações Aprovadas</h5>
+                <p class="card-text" id="soliApro">#</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Solicitações Rejeitadas</h5>
+                <p class="card-text" id="soliReje">#</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SEÇÃO DE RELATÓRIO DE BENEFICIÁRIOS -->
+      <div class="dashboard-section">
+        <h5>Relatório de Beneficiários</h5>
+        <div class="table-responsive">
+          <table class="table table-striped" id="beniRel">
+            <thead>
+              <tr>
+                <th scope="col">Nome</th>
+                <th scope="col">Valor Financiado</th>
+                <th scope="col">Parcelas Restantes</th>
+                <th scope="col">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>João da Silva</td>
+                <td>R$ 50.000,00</td>
+                <td>8 de 24</td>
+                <td>Adimplente</td>
+              </tr>
+              <tr>
+                <td>Maria dos Santos</td>
+                <td>R$ 30.000,00</td>
+                <td>5 de 12</td>
+                <td>Adimplente</td>
+              </tr>
+              <tr>
+                <td>Carlos Pereira</td>
+                <td>R$ 40.000,00</td>
+                <td>3 de 18</td>
+                <td>Atrasado</td>
+              </tr>
+              <!-- Adicione mais beneficiários aqui -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- SEÇÃO DE RELATÓRIO DE SOLICITAÇÕES -->
+      <div class="dashboard-section">
+        <h5>Relatório de Solicitações de Financiamento</h5>
+        <div class="table-responsive">
+          <table class="table table-striped" id="financiamentoRel">
+            <thead>
+              <tr>
+                <th scope="col">Nome</th>
+                <th scope="col">Valor Solicitado</th>
+                <th scope="col">Data da Solicitação</th>
+                <th scope="col">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Luciana Costa</td>
+                <td>R$ 25.000,00</td>
+                <td>15 de Outubro de 2024</td>
+                <td>Aprovada</td>
+              </tr>
+              <tr>
+                <td>José Fernandes</td>
+                <td>R$ 35.000,00</td>
+                <td>10 de Outubro de 2024</td>
+                <td>Rejeitada</td>
+              </tr>
+              <tr>
+                <td>Ana Lima</td>
+                <td>R$ 20.000,00</td>
+                <td>08 de Outubro de 2024</td>
+                <td>Pendente</td>
+              </tr>
+              <!-- Adicione mais solicitações aqui -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Rodapé -->
+<footer class="bg-dark text-white pt-4">
+  <div class="container">
+    <div class="row">
+      <!-- Sobre Nós -->
+      <div class="col-md-4">
+        <h5>Sobre Nós</h5>
+        <p>A RuralFin é uma empresa dedicada a apoiar pequenos agricultores e empreendedores, oferecendo soluções financeiras sob medida para o crescimento sustentável.</p>
+      </div>
+
+      <!-- Links Úteis -->
+      <div class="col-md-2">
+        <h5>Links Úteis</h5>
+        <ul class="list-unstyled">
+          <li><a href="../conectadoGestor/gestorPaginaInicial.html" class="text-white">Página Inicial</a></li>
+          <li><a href="../sobre.html" class="text-white">Sobre Nós</a></li>
+        </ul>
+      </div>
+
+      <!-- Contacto -->
+      <div class="col-md-3">
+        <h5>Contacto</h5>
+        <p>Email: <a href="mailto:contato@ruralfin.com" class="text-white">contato@ruralfin.com</a></p>
+        <p>Telefone: +258 84 218 1307</p>
+        <p>Endereço: Rua 56, Macurungo - Manganhe</p>
+      </div>
+
+      <!-- Redes Sociais -->
+      <div class="col-md-3">
+        <h5>Siga-nos</h5>
+        <a href="#" class="text-white mr-2"><img src="../imagens/icons/facebook.png" alt="Facebook" width="24"></a>
+        <a href="#" class="text-white mr-2"><img src="../imagens/icons/instagram.png" alt="Instagram" width="24"></a>
+        <a href="#" class="text-white mr-2"><img src="../imagens/icons/whatsapp.png" alt="WhatsApp" width="24"></a>
+      </div>
+    </div>
+
+    <!-- Linha separadora -->
+    <hr class="my-4 bg-light">
+
+    <!-- Informações legais e copyright -->
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <p>&copy; 2024 RuralFin. Todos os direitos reservados.</p>
+        <p><a href="../rodape/politicaPrivacidade.html" class="text-white">Política de Privacidade</a> | <a href="../rodape/termosDeUso.html" class="text-white">Termos de Uso</a></p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    <!-- SCRIPTS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <script type="module" src="../db/relatorio.js"></script>
+</body>
+</html>

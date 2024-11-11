@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RuralFin: Editar Cadastro</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #595f64;
+            margin: 0;
+        }
+
+        .edit-box {
+            background-color: #343a40;
+            padding: 30px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+            text-align: center;
+            border: 2px solid #5c6164;
+        }
+
+        .edit-box img {
+            display: block;
+            margin: 0 auto -20px;
+            height: 80px;
+            max-width: 100%;
+            border-radius: 10px;
+        }
+
+        .edit-box h2 {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #c4bebe;
+        }
+
+        .form-group label {
+            float: left;
+            font-size: 14px;
+            color: #c4bebe;
+        }
+
+        .form-control {
+            margin-bottom: 15px;
+            border-radius: 5px;
+            height: 40px;
+            font-size: 14px;
+        }
+
+        .btn-primary {
+            width: 100%;
+            height: 40px;
+            border-radius: 5px;
+        }
+
+        .links {
+            margin-top: 20px;
+            font-size: 14px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .links a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .links a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .edit-box {
+                padding: 20px;
+            }
+
+            .edit-box img {
+                height: 60px;
+            }
+
+            .form-row {
+                flex-wrap: wrap;
+            }
+
+            .form-group {
+                flex: 1 0 100%;
+                margin-bottom: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="edit-box">
+        <img src="../imagens/logo.png" alt="Logo do Sistema">
+        <h2>Editar Cadastro</h2>
+        <form>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="nome">Nome</label>
+                    <input type="text" class="form-control" id="nome" placeholder="Digite seu nome" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="data-nascimento">Data de Nascimento</label>
+                    <input type="date" class="form-control" id="data-nascimento" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="profissao">Profissão</label>
+                    <input type="text" class="form-control" id="profissao" placeholder="Digite sua profissão" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="morada">Morada</label>
+                    <input type="text" class="form-control" id="morada" placeholder="Digite sua morada" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="numero-celular">Número de Celular (com prefixo)</label>
+                    <input type="tel" class="form-control" id="numero-celular" placeholder="Ex: +55 11 91234-5678" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="email">E-mail</label>
+                    <input type="email" class="form-control" id="email" placeholder="Digite seu e-mail" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="senha">Nova Senha</label>
+                    <input type="password" class="form-control" id="senha" placeholder="Digite sua nova senha">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="confirma-senha">Confirmação de Senha</label>
+                    <input type="password" class="form-control" id="confirma-senha" placeholder="Confirme sua nova senha">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary" id="btnUpdate">Salvar Alterações</button>
+        </form>
+
+        <div class="links">
+            <a href="painel.html">Voltar ao Perfil</a>
+            <a href="../conectadoBeneficiario/beneficiarioPaginaInicial.html">Voltar à página inicial</a>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script type="module" src="../db/edtInfo.js"></script>
+</body>
+</html>

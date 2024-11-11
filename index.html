@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RuralFin: Início</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=DynaPuff:wght@400..700&family=Kablammo&display=swap" rel="stylesheet">
+    <style>
+      /*Para tela do PC - BARRA DE NAVEGAÇÃO*/
+@media (min-width: 992px) {
+  .navbar {
+    height: 85px; /* Altura reduzida para a barra de navegação no PC */
+    padding: 0 4%; /* Mantém o espaço lateral */
+  }
+ 
+  .navbar-nav {
+    margin-left: auto; /* Empurra os links para a direita */
+    margin-right: 1%; /* Mantém 1% de espaço à direita */
+  }
+
+  .navbar-brand img {
+    height: auto;
+    width: 100%; /* Para garantir que a logo se redimensione */
+    max-width: 300px; /* Defina um tamanho máximo para evitar que fique muito grande */
+}
+
+.navbar-nav .nav-link {
+    line-height: 80px; /* Alinha os links verticalmente */
+}
+
+  .navbar-nav .nav-item {
+    margin-right: 15px; /* Aumenta o espaçamento entre os links */
+  }
+
+  .navbar-nav .nav-link {
+    line-height: 70px; /* Alinha verticalmente os links à altura da barra */
+    
+  }
+
+   /* Definindo a altura do carrossel */
+   .carousel-inner, .carousel-item {
+    height: 480px; /* Defina a altura que deseja */
+  }
+
+}
+
+.carousel {
+    margin-top: 0; /* Remova a margem fixa */
+}
+
+  /* Garantir que as imagens se ajustem corretamente */
+  .carousel-item img {
+    object-fit: cover;
+    height: 100%;
+  }
+
+  /* Alterar a cor das setas de navegação */
+  .carousel-control-prev-icon,
+  .carousel-control-next-icon {
+    background-color: #000000; /* Escolha a cor desejada */
+    border-radius: 50%; /* Opcional, para arredondar as setas */
+  }
+
+  /* Mudar a cor dos tracinhos (indicadores) */
+  .carousel-indicators li {
+    background-color: #007bff; /* Cor para os indicadores */
+  }
+
+  /* Cor para o indicador ativo */
+  .carousel-indicators .active {
+    background-color: #dc3545; /* Cor para o indicador ativo */
+  }
+
+  /*CARROSEL fontes*/
+  .carousel-caption h5 {
+    font-family: "DynaPuff", system-ui;
+  font-optical-sizing: auto;
+ font-size: 20px;
+  color: #ff9900;
+  background-color: #343a40;
+  display: inline-block;
+  padding: 1px;
+}
+
+.carousel-caption p {
+  font-family: "DynaPuff", system-ui;
+  font-optical-sizing: auto;
+  color:  #ff9900; /* Mude para a cor desejada */
+  background-color: #343a40;
+  display: inline-block;
+  padding: 1px;
+}
+
+/*CARD*/
+.card-deck{
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+body{
+  background-color: rgb(98, 116, 110);
+}
+
+/*Rodapé*/
+footer {
+    background-color: #343a40; /* Cor da barra bg-dark */
+    padding: 40px 0;
+  }
+
+  footer a {
+    text-decoration: none;
+  }
+
+  footer a:hover {
+    color: #007bff; /* Cor ao passar o mouse */
+  }
+
+  footer h5 {
+    font-weight: bold;
+    margin-bottom: 15px;
+  }
+
+  footer p {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  /* Responsivo para telas menores */
+  @media (max-width: 768px) {
+    footer .col-md-4, footer .col-md-2, footer .col-md-3 {
+      margin-bottom: 20px;
+    }
+  }
+    </style>
+  </head>
+<body>
+
+    <!--BARRA DE NAVEGAÇÃO-->
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+     
+      <a class="navbar-brand" href="#" style="margin-left: 4%;"><img src="imagens/logo.png" alt="" width="300px" height="100px" > </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
+          
+        
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Início<span class="sr-only">(página atual)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="entrarRegistrar/login.html">Entrar/Registrar-se</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" onclick="mostrarModal()">Financiamento</a> <!--SE B/G-->
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="sobre.html">Sobre</a>
+              </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contacto.html">Contacto</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    
+       <!-- Modal de Popup -->
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="loginModalLabel">Acesso Restrito</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Você precisa estar logado para acessar a área de financiamento. Faça login ou registre-se para continuar.
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+            <a href="entrarRegistrar/login.html" class="btn btn-primary">Entrar</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+   <!--IMAGENS - CARROSSEL-->
+   <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img class="d-block w-100" src="imagens/img4.jpg" alt="Primeiro Slide">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Apoio Sustentável para a Agricultura</h5>
+          <p>Nossa missão é impulsionar a sustentabilidade agrícola, garantindo que você tenha os recursos certos para cultivar e crescer com eficiência.</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img class="d-block w-100" src="imagens/img2.jpg" alt="Segundo Slide">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Transforme Seu Sonho em Realidade</h5>
+          <p>Com condições de pagamento flexíveis e acompanhamento contínuo, estamos ao seu lado em cada passo da sua jornada rumo ao sucesso.</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img class="d-block w-100" src="imagens/img3.jpg" alt="Terceiro Slide">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Financiamento Sob Medida para o Seu Crescimento</h5>
+          <p>Oferecemos suporte financeiro especializado para agricultores e pequenos empreendedores, ajudando a transformar ideias em realizações e negócios em sucessos.</p>
+        </div>
+       
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Anterior</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Próximo</span>
+    </a>
+  </div>
+
+
+<!--CARDS-->
+<div class="card-deck">
+  <div class="card">
+    <img class="card-img-top" src="imagens/img.jpg" alt="Imagem de capa do card">
+    <div class="card-body">
+      <h5 class="card-title">Solicite Seu Financiamento</h5>
+      <p class="card-text">Simples, rápido e acessível. Conquiste o apoio financeiro que você precisa para expandir suas atividades e concretizar seus projetos.</p>
+      <p class="card-text" data-update-time><small class="text-muted">Atualizados 0 minutos atrás</small></p>
+    </div>
+  </div>
+  <div class="card">
+    <img class="card-img-top" src="imagens/img5.jpg" alt="Imagem de capa do card">
+    <div class="card-body">
+      <h5 class="card-title">Monitoramento e Suporte</h5>
+      <p class="card-text">Acompanhe o uso dos seus recursos e receba relatórios regulares, garantindo total transparência e eficiência na execução de suas atividades.</p>
+      <p class="card-text" data-update-time><small class="text-muted">Atualizados 0 minutos atrás</small></p>
+    </div>
+  </div>
+  <div class="card">
+    <img class="card-img-top" src="imagens/img6.jpg" alt="Imagem de capa do card">
+    <div class="card-body">
+      <h5 class="card-title">Facilidade de Pagamento</h5>
+      <p class="card-text">Oferecemos planos de amortização flexíveis, pensados para facilitar o seu fluxo de caixa e o sucesso do seu negócio.</p>
+      <p class="card-text" data-update-time><small class="text-muted">Atualizados 0 minutos atrás</small></p>
+    </div>
+  </div>
+</div>
+
+<!--RODAPÉ-->
+<!-- Rodapé -->
+<footer class="bg-dark text-white pt-4">
+  <div class="container">
+    <div class="row">
+      <!-- Sobre Nós -->
+      <div class="col-md-4">
+        <h5>Sobre Nós</h5>
+        <p>A RuralFin é uma empresa dedicada a apoiar pequenos agricultores e empreendedores, oferecendo soluções financeiras sob medida para o crescimento sustentável.</p>
+      </div>
+
+      <!-- Links Úteis -->
+      <div class="col-md-2">
+        <h5>Links Úteis</h5>
+        <ul class="list-unstyled">
+          <li><a href="#" class="text-white">Página Inicial</a></li>
+          <li><a href="#" class="text-white" onclick="mostrarModal()">Solicitar Financiamento</a></li> <!--Se G/B-->
+          <li><a href="sobre.html" class="text-white">Sobre Nós</a></li>
+          <li><a href="contacto.html" class="text-white">Fale Conosco</a></li>
+        </ul>
+      </div>
+
+      <!-- Contacto -->
+      <div class="col-md-3">
+        <h5>Contacto</h5>
+        <p>Email: <a href="mailto:titosmicas63@gmail.com" class="text-white">contato@ruralfin.com</a></p>
+        <p>Telefone: +258 84 218 1307</p>
+        <p>Endereço: Rua 56, Macurungo - Manganhe</p>
+      </div>
+
+      <!-- Redes Sociais -->
+      <div class="col-md-3">
+        <h5>Siga-nos</h5>
+        <a href="https://www.facebook.com/profile.php?id=61568205785292" class="text-white mr-2"><img src="imagens/icons/facebook.png" alt="Facebook" width="24"></a>
+        <a href="https://www.instagram.com/titosxp/profilecard/?igsh=MTg2eXEzdnU5Ynd4cw==" class="text-white mr-2"><img src="imagens/icons/instagram.png" alt="Instagram" width="24"></a>
+        <a href="https://chat.whatsapp.com/GNqc0f78J5s0iHyXOAXUAA" class="text-white mr-2"><img src="imagens/icons/whatsapp.png" alt="WhatsApp" width="24"></a>
+      </div>
+    </div>
+
+    <!-- Linha separadora -->
+    <hr class="my-4 bg-light">
+
+    <!-- Informações legais e copyright -->
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <p>&copy; 2024 RuralFin. Todos os direitos reservados.</p>
+        <p><a href="rodape/politicaPrivacidade.html" class="text-white">Política de Privacidade</a> | <a href="rodape/termosDeUso.html" class="text-white">Termos de Uso</a></p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+  <script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const navbar = document.querySelector('.navbar');
+    const carousel = document.querySelector('.carousel');
+    const navbarHeight = navbar.offsetHeight;
+
+    // Definindo a margem superior do carrossel
+    carousel.style.marginTop = navbarHeight + 'px';
+});
+
+</script>
+  
+<script>
+  function mostrarModal() {
+    $('#loginModal').modal('show'); // Exibe o modal
+  }
+</script>
+
+<script>
+  // Função para atualizar o tempo nos cards
+  function atualizarTempo() {
+    const elementosTempo = document.querySelectorAll("[data-update-time]");
+    
+    elementosTempo.forEach((elemento) => {
+      let minutos = parseInt(elemento.getAttribute("data-minutes")) || 0;
+      minutos += 1;
+
+      // Determinar se mostrar em minutos ou horas
+      let textoTempo;
+      if (minutos < 60) {
+        textoTempo = `Atualizado a ${minutos} minuto${minutos > 1 ? 's' : ''} atrás`;
+      } else {
+        const horas = Math.floor(minutos / 60);
+        textoTempo = `Atualizado a ${horas} hora${horas > 1 ? 's' : ''} atrás`;
+      }
+      
+      // Atualizar o texto do tempo
+      elemento.querySelector("small").textContent = textoTempo;
+
+      // Salvar o novo valor de minutos no atributo
+      elemento.setAttribute("data-minutes", minutos);
+    });
+  }
+
+  // Configurar o intervalo para atualizar a cada 1 minuto (60000 ms)
+  setInterval(atualizarTempo, 60000);
+</script>
+
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</body>
+</html>

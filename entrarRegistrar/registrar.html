@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RuralFin: Cadastro</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #595f64;
+            margin: 0; 
+           /* overflow: hidden; /* Impede a barra de rolagem */
+        }
+
+        .register-box {
+            background-color: #343a40;
+            padding: 30px; 
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            max-width: 500px; /* Largura máxima */
+            width: 90%; /* Largura responsiva */
+            position: relative;
+            text-align: center;
+            border: 2px solid #5c6164;
+        }
+
+        .register-box img {
+            display: block; /* Exibe a imagem como um bloco */
+            margin: 0 auto -20px; /* Centraliza a logo e ajusta a margem inferior */
+            height: 80px; /* Altura da logo */
+            max-width: 100%; /* Para evitar deformação */
+            border-radius: 10px;
+        }
+
+        .register-box h2 {
+            margin-top: 20px; /* Ajuste do espaçamento superior */
+            margin-bottom: 20px; /* Ajuste do espaçamento inferior */
+            font-size: 24px;
+            color: #c4bebe;
+        }
+
+        .form-group label {
+            float: left;
+            font-size: 14px; /* Diminuí o tamanho da fonte */
+            color: #c4bebe;
+        }
+
+        .form-control {
+            margin-bottom: 15px; /* Diminuí o espaço entre os campos */
+            border-radius: 5px;
+            height: 40px; /* Ajustei a altura dos campos */
+            font-size: 14px; /* Diminuí o tamanho da fonte */
+        }
+
+        .btn-primary {
+            width: 100%;
+            height: 40px; /* Ajustei a altura do botão */
+            border-radius: 5px;
+        }
+
+        .links {
+            margin-top: 20px; /* Espaçamento para os links */
+            font-size: 14px;
+            display: flex; /* Alinhamento flexível */
+            justify-content: space-between; /* Alinha os links nas extremidades */
+        }
+
+        .links a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .links a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .register-box {
+                padding: 20px; /* Ajustei o padding para telas menores */
+            }
+
+            .register-box img {
+                height: 60px; /* Ajustei a altura da logo em telas menores */
+            }
+
+            .form-row {
+                flex-wrap: wrap; /* Permite que os campos se reorganizem em telas menores */
+            }
+
+            .form-group {
+                flex: 1 0 100%; /* Faz com que os campos ocupem 100% em telas pequenas */
+                margin-bottom: 15px; /* Ajuste do espaço inferior */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="register-box">
+        <img src="../imagens/logo.png" alt="Logo do Sistema">
+        <h2>Cadastro</h2>
+        <form action="#">
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="nome">Nome</label>
+                    <input type="text" class="form-control" id="nome" placeholder="Digite seu nome" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="data-nascimento">Data de Nascimento</label>
+                    <input type="date" class="form-control" id="data-nascimento" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="profissao">Profissão</label>
+                    <input type="text" class="form-control" id="profissao" placeholder="Digite sua profissão" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="morada">Morada</label>
+                    <input type="text" class="form-control" id="morada" placeholder="Digite sua morada" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="numero-celular">Número de Celular (com prefixo)</label>
+                    <input type="tel" class="form-control" id="numero-celular" placeholder="Ex: (+258) 8x xxx xxxx" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="email">E-mail</label>
+                    <input type="email" class="form-control" id="email" placeholder="Digite seu e-mail" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="senha">Senha</label>
+                    <input type="password" class="form-control" id="senha" placeholder="Digite sua senha" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="confirma-senha">Confirmação de Senha</label>
+                    <input type="password" class="form-control" id="confirma-senha" placeholder="Confirme sua senha" required>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary" id="btnCadastrar">Cadastrar</button>
+        </form>
+
+        <div class="links">
+            <a href="login.html">Já tem conta? Entrar</a>
+            <a href="../index.html">Voltar à página inicial</a>
+        </div>
+    </div>
+
+    
+    <!-- Modal de Erro -->
+    <div class="modal" tabindex="-1" role="dialog" id="errorModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Erro de Cadastro</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p id="errorMessage"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script type="module" src="../db/index.js"></script>
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RuralFin: Definir Nova Senha</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #595f64;
+            margin: 0;
+            overflow: hidden;
+        }
+        .recovery-box {
+            background-color: #343a40;
+            padding: 30px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+            border: 2px solid #5c6164;
+        }
+        .recovery-box h2 {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #c4bebe;
+        }
+        .form-group label {
+            float: left;
+            font-size: 14px;
+            color: #c4bebe;
+        }
+        .form-control {
+            margin-bottom: 15px;
+            border-radius: 5px;
+            height: 40px;
+            font-size: 14px;
+        }
+        .btn-primary {
+            width: 100%;
+            height: 40px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="recovery-box">
+        <img src="../imagens/logo.png" alt="Logo do Sistema">
+        <h2>Definir Nova Senha</h2>
+        <form id="newPasswordForm">
+            <div class="form-group">
+                <label for="novaSenha">Nova Senha</label>
+                <input type="password" class="form-control" id="novaSenha" placeholder="Digite a nova senha" required>
+            </div>
+            <div class="form-group">
+                <label for="confirmaSenha">Confirmar Nova Senha</label>
+                <input type="password" class="form-control" id="confirmaSenha" placeholder="Confirme a nova senha" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Definir Nova Senha</button>
+        </form>
+    </div>
+
+    <!-- Modal para mensagens -->
+    <div class="modal fade" id="responseModal" tabindex="-1" aria-labelledby="responseModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="responseModalLabel">Atenção</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="responseMessage"></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#newPasswordForm').on('submit', function(event) {
+                event.preventDefault();
+                const novaSenha = $('#novaSenha').val();
+                const confirmaSenha = $('#confirmaSenha').val();
+
+                if (novaSenha !== confirmaSenha) {
+                    $('#responseMessage').text('As senhas não coincidem!');
+                    $('#responseModal').modal('show');
+                    return;
+                }
+
+                $.ajax({
+                    url: 'http://localhost/PROJECTODESIFV1/conexao/definirNovaSenha.php',
+                    type: 'POST',
+                    data: { email: sessionStorage.getItem('email'), novaSenha: novaSenha },
+                    success: function(response) {
+                        const data = JSON.parse(response);
+                        $('#responseMessage').text(data.mensagem || 'Erro ao redefinir a senha.');
+                        $('#responseModal').modal('show');
+
+                        if (data.status === 'success') {
+                            $('#responseModal').on('hidden.bs.modal', function () {
+                                window.location.href = 'login.html';
+                            });
+                        }
+                    },
+                    error: function() {
+                        $('#responseMessage').text('Erro ao tentar redefinir a senha. Tente novamente mais tarde.');
+                        $('#responseModal').modal('show');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
